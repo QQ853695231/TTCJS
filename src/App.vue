@@ -3,20 +3,28 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <el-button type="primary" @click="onClick">3333333</el-button>
+    {{result}}
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+import {doSearch} from '@/api/music'
 export default {
   name: 'App',
   components: {
     HelloWorld
   },
+  data() {
+    return {
+      result: null
+    }
+  },
   methods: {
-    onClick() {
-      this.$message.success("hello world")
+    async onClick() {
+      const res = await doSearch()
+      this.result = res.data.result
+      this.$message.success("查询成功")
     }
   }
 }
