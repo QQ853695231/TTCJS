@@ -2,7 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <el-button type="primary">3333333</el-button>
+    <el-button type="primary" @click="onClick">3333333</el-button>
   </div>
 </template>
 
@@ -13,6 +13,11 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  methods: {
+    onClick() {
+      this.$message.success("hello world")
+    }
   }
 }
 </script>
